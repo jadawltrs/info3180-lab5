@@ -15,6 +15,9 @@ from wtforms.validators import DataRequired, Length
 
 # Add any form classes for Flask-WTF here
 class MovieForm(FlaskForm):
+    class Meta:
+        csrf = False
+        
     title = StringField('Movie Title', validators=[DataRequired(), Length(max=100)])
     description = TextAreaField('Description', validators=[DataRequired()])
     poster = FileField('Poster Image', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'jpeg'], 'Images only!')])
